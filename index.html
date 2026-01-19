@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a New Lead</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      min-height: 100vh;
+
+      display: block;            /* FIX: remove flex */
+      padding: 16px 12px;        /* mobile spacing */
+    }
+
+    .form-container {
+      background: #ffffff;
+      width: 100%;
+      max-width: 520px;
+      padding: 22px 18px 26px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+      margin: 0 auto;            /* center horizontally */
+    }
+
+    .logo {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    #clinicLogo {
+      display: block;
+      margin: 0 auto 16px auto;
+
+      width: 240px;
+      max-width: 90vw;
+      height: auto;
+
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d0d7de;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: #1976d2;
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #1976d2, #42a5f5);
+      border: none;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(25, 118, 210, 0.35);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* ===== Mobile Adjustments ===== */
+    @media (max-width: 520px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      #clinicLogo {
+        width: 180px;
+      }
+
+      label {
+        font-size: 12px;
+      }
+
+      input[type="text"],
+      select {
+        font-size: 13px;
+        padding: 9px 10px;
+      }
+
+      .submit-btn {
+        font-size: 14px;
+        padding: 11px 0;
+      }
+
+      .footer-text {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+
+    <!-- Logo Section -->
+    <div class="logo">
+      <img id="clinicLogo"
+           src="https://ideaclicks.in/assets/images/ideaclicks20logo-256x256.png"
+           alt="IdeaClicks Logo">
+    </div>
+
+    <!-- Salesforce Web-to-Lead Form -->
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000rJlJF" method="POST">
+
+      <input type="hidden" name="oid" value="00DdN00000rJlJF">
+      <input type="hidden" name="retURL" value="http://google.com">
+
+      <div class="two-col">
+        <div class="field-group">
+          <label for="first_name">First Name</label>
+          <input id="first_name" name="first_name" type="text" maxlength="40" placeholder="John" required>
+        </div>
+
+        <div class="field-group">
+          <label for="last_name">Last Name</label>
+          <input id="last_name" name="last_name" type="text" maxlength="80" placeholder="Doe" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="text" maxlength="80" placeholder="john@example.com" required>
+      </div>
+
+      <div class="two-col">
+        <div class="field-group">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="text" maxlength="40" placeholder="+91 98765 43210">
+        </div>
+
+        <div class="field-group">
+          <label for="city">City</label>
+          <input id="city" name="city" type="text" maxlength="40" placeholder="Mumbai">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="company">Company</label>
+        <input id="company" name="company" type="text" maxlength="40" placeholder="Self / NA">
+      </div>
+
+      <div class="field-group">
+        <label for="country_code">Country</label>
+        <select id="country_code" name="country_code">
+          <option value="">--None--</option>
+          <option value="IN">India</option>
+          <option value="US">United States</option>
+          <option value="GB">United Kingdom</option>
+          <option value="AE">United Arab Emirates</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="url">Website</label>
+        <input id="url" name="url" type="text" maxlength="80" placeholder="https://example.com">
+      </div>
+
+      <div class="field-group">
+        <label for="lead_source">Lead Source</label>
+        <select id="lead_source" name="lead_source">
+          <option value="">--None--</option>
+          <option value="Web">Web</option>
+          <option value="Advertisement">Advertisement</option>
+          <option value="Word of mouth">Word of mouth</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+
+      <div class="footer-text">
+        Powered by IdeaClicks Secure Form
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>
